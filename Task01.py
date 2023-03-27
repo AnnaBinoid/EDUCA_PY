@@ -201,8 +201,8 @@
 #     a[ind] = ind(a[ind])
 # print(a)
 
-# Задача №17. Дан список чисел. Определите, сколько в нем 
-# встречается различных чисел. 
+# Задача №17. Дан список чисел. Определите, сколько в нем
+# встречается различных чисел.
 # Input: [1, 1, 2, 0, -1, 3, 4, 4]
 # Output: 6
 
@@ -219,8 +219,8 @@
 
 
 # Задача №19. Решение в группах
-# Дана последовательность из N целых чисел и число K. Необходимо 
-# сдвинуть всю последовательность (сдвиг - циклический) на K 
+# Дана последовательность из N целых чисел и число K. Необходимо
+# сдвинуть всю последовательность (сдвиг - циклический) на K
 # элементов вправо, K – положительное число.
 # Input: [1, 2, 3, 4, 5] k = 3
 # Output: [4, 5, 1, 2, 3]
@@ -260,7 +260,7 @@
 #     input_value = input(f"Введите значение {i + 1}: ")
 #     if input_dict.get(input_key) == None:
 #         input_dict[input_key] = input_value
-    
+
 # print(input_dict)
 
 # input_set = set(input_dict.values())
@@ -293,3 +293,119 @@
 
 # print(count)
 
+# 1. Последовательностью Фибоначчи называется последовательность чисел a0, a1, ..., an, ..., где
+#
+# a0 = 0, a1 = 1, ak = ak-1 + ak-2 (k > 1).
+#
+# Требуется найти N-е число Фибоначчи
+
+# 0, 1, 1, 2, 3, 5, 8, 13...
+
+
+# def fib(num):
+#     first = 0
+#     second = 1
+#     if num == 1:
+#         return 0
+#     if num == 2:
+#         return 1
+#     return fib(num - 1) + fib(num - 2)
+# print(fib(7))
+
+# def fibonachi_iteration(serial_number):
+#     first = 0
+#     second = 1
+#     if serial_number == 1:
+#         return first
+#     if serial_number == 2:
+#        return second
+#        count = 2
+#     while serial_number != count:
+#        third = first + second
+#        first = second
+#        second = third
+#        count += 1
+#        return third
+# print(fibonachi_recursion(15))
+# print(fibonachi_iteration(15))
+
+# Хакер Василий получил доступ к классному журналу и хочет заменить все свои минимальные оценки на максимальные.
+# Напишите программу, которая заменяет оценки Василия, но наоборот: все максимальные – на минимальные.
+
+# def max_replace_min(input_list: list):
+#     min_number = input_list[0]
+#     max_number = input_list[0]
+#     for i in range(len(input_list)):
+#         if input_list[i] > max_number:
+#             max_number = input_list[i]
+#         if input_list[i] < min_number:
+#             min_number = input_list[i]
+
+#     for i in range(len(input_list)):
+#         if input_list[i] == max_number:
+#             input_list[i] = min_number
+
+#     return input_list
+
+
+# input_list = []
+# list_len = int(input("Введите количество элементов в списке: "))
+# for _ in range(list_len):
+#     input_list.append(int(input(f'Введите число: ')))
+# print(input_list)
+
+# print(max_replace_min(input_list))
+
+# Напишите функцию, которая принимает одно число и проверяет, является ли оно простым
+
+# def simple_num(user_number):
+#     if user_number != 2 and user_number % 2 == 0:
+#         return False
+#     for i in range(3, user_number //2 + 1 , 2):
+#         if user_number % i == 0:
+#             return False
+            
+#     return True
+    
+# user_number = int(input("Введите число: "))
+# print(simple_num(user_number))
+
+# Дан список интов, повторяющихся элементов в списке нет. Нужно преобразовать
+# это множество в строку, сворачивая соседние по числовому ряду числа в
+# диапазоны.
+# Примеры
+# :
+# [1,4,5,2,3,9,8,11,0] => "0-5,8-9,11"
+# [1,4,3,2] => "1-4"
+# [1,4] => "1,4"
+
+import random
+
+def range_num(input_list):
+    input_list.append(1.9)
+    result_temp = []
+    result= []
+    
+    for i in range(len(input_list) - 1):
+        if input_list[i] == input_list[i + 1] - 1:
+            result_temp.append(input_list[i])
+
+        else:
+            if input_list[i] not in result_temp:
+                result_temp.append(input_list[i])
+            result.append(result_temp)
+            result_temp = []
+
+    print(result)
+    result_str = []
+    for i in result:
+        if len(i) >= 2:
+            result_str.append(f"{i[0]} - {i[-1]}")
+        else:
+            result_str.append(f"{i[0]}")
+    return result_str
+
+
+input_list = sorted(set([random.randint(1, 25) for _ in range(20)]))
+print(input_list)
+print(*range_num(input_list), sep = " , " )

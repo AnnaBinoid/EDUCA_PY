@@ -272,3 +272,154 @@
 # Пример:
 # ноутбук
 # 12
+
+# Задача 18: Требуется найти в массиве A[1..N] самый близкий по величине элемент к 
+# заданному числу X. Пользователь в первой строке вводит натуральное число N – количество 
+# элементов в массиве. В последующих  строках записаны N целых чисел Ai. Последняя строка 
+# содержит число X
+
+# some_list = [random.randint(-1000, 1000) for _ in range(1000000)]
+# print(some_list)
+# x = int(input())
+
+# start = perf_counter()
+# some_set = set(some_list)
+
+# diff = 1
+# while True:
+#     if x + diff in some_set:
+#         print(x + diff)
+#         break
+#     elif x - diff in some_set:
+#         print(x - diff)
+#         break
+#     diff += 1
+# end = perf_counter()
+# print(end - start)
+
+# 25. Напишите программу, которая принимает на вход строку, и отслеживает
+# количество повторов каждого символа.
+
+# my_string = input("Введите строку: ")
+# characters_count = {}
+# for i in my_string:
+#     if i in characters_count:
+#         characters_count[i] += 1
+#     else:
+#         characters_count[i] = 1  # создать пару ключ - значение
+
+# print(characters_count)
+
+
+# 27. Пользователь вводит текст(строка). Словом считается последовательность 
+# непробельных символов идущих подряд, слова разделены одним или большим числом 
+# пробелов или символами конца строки. Определите, сколько различных
+# слов содержится в этом тексте.
+
+# input_str = input("введите текст: ").upper() + " "
+# count = 1
+# word_list = set()
+# word = ""
+# for char in input_str:
+#     if char != " ":
+#         word += char
+#     else:
+#         word_list.add(word)
+#         word = ""
+# print(len(word_list))
+
+# 1.Создайте список из случайных чисел. Найдите номер его последнего локального 
+# максимума (локальный максимум — это элемент, который больше обоих из своих 
+# соседей).
+
+# import random
+
+# input_list = [random.randint(1, 100) for _ in range(10)]
+# print(input_list)
+# for i in range(len(input_list) - 2, 0, -1):
+#     if input_list[i - 1] < input_list[i] > input_list[i + 1]:
+#         print(i)
+#         break
+
+# 3.Создайте список из случайных чисел. Найдите второй максимум.
+# import random
+
+# input_list = list(set([random.randint(1, 32) for _ in range(20)])
+                  
+# print(input_list)
+# first_max = input_list[0]
+# second_max = input_list[1]
+
+# for i in input_list:
+#     if i > first_max:
+#         second_max = first_max
+#         first_max = i
+#     elif i > second_max and i != first_max:
+#         second_max = i
+# print(second_max)
+
+# Задача 22: Даны два неупорядоченных набора целых чисел (может быть, с повторениями). Выдать без повторений в порядке 
+# возрастания все те числа, которые встречаются в обоих наборах. Пользователь вводит 2 числа. n - кол-во элементов первого 
+# множества. m - кол-во элементов второго множества. Затем пользователь вводит сами элементы множеств.
+
+# import random
+
+# first_list_size = int(input("Введите количество элементов для первого набора чисел: "))
+# second_list_size = int(input("Введите количество элементов для второго набора чисел: "))
+
+# first_list = []
+# second_list = []
+
+
+# # # first_list = [random.randint(1, 15) for _ in range(first_list_size)]
+# # # print(first_list)
+# # # second_list = [random.randint(1, 15) for _ in range(second_list_size)]
+# # # print(second_list)
+
+
+# for i in range(first_list_size):
+#     first_list.append(input(f"Введите {i+1} элемент первого набора чисел: "))
+
+# for i in range(second_list_size):
+#     second_list.append(input(f"Введите {i+1} элемент вторго набора чисел: "))
+# print(first_list)
+# print(second_list)
+
+# def join_list(first_l, second_l):
+#     join_list = []
+#     for i in first_l:
+#         for j in second_l:
+#             if i == j:
+#                 join_list.append(i)
+#     if len(join_list) == 0:
+#         print("Нет совпадений.")
+#     else:
+#         print(sorted(set(join_list)))
+    
+
+# join_list(first_list, second_list)
+          
+
+# Задача 24: В фермерском хозяйстве в Карелии выращивают чернику. Она растет на круглой грядке, причем кусты высажены только 
+# по окружности. Таким образом, у каждого куста есть ровно два соседних. Всего на грядке растет N кустов. Эти кусты обладают 
+# разной урожайностью, поэтому ко времени сбора на них выросло различное число ягод – на i-ом кусте выросло ai ягод.
+# # В этом фермерском хозяйстве внедрена система автоматического сбора черники. Эта система состоит из управляющего модуля и 
+# # нескольких собирающих модулей. Собирающий модуль за один заход, находясь непосредственно перед некоторым кустом, собирает 
+# # ягоды с этого куста и с двух соседних с ним.
+# # Напишите программу для нахождения максимального числа ягод, которое может собрать за один заход собирающий модуль, находясь 
+# # перед некоторым кустом заданной во входном файле грядки.
+
+# from random import randint
+
+# first_list = list(randint(1, 5) for i in range(int(input('Всего кустов с ягодами: '))))
+# print(first_list)
+# bush_number = int(input('Введите номер куста: '))
+# res = 0
+# if bush_number == 1:
+#     res = first_list[0] + first_list[1] + first_list[-1]
+# elif bush_number == len(first_list):
+#     res = first_list[-2] + first_list[-1] + first_list[0]
+# else:
+#     res = first_list[bush_number-1] + first_list[bush_number-2] + first_list[bush_number]
+# print(res, 'ягод')
+
