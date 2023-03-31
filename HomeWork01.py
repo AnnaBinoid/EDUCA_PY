@@ -506,3 +506,41 @@
 # our_string = input("Введите стоку из букв A-Z: ").upper()
 # new_list = list(our_string)
 # count_of_letters(new_list)
+
+
+
+# Задача 30:  Заполните массив элементами арифметической прогрессии. Её первый элемент, 
+# разность и количество элементов нужно ввести с клавиатуры. Формула для получения n-го 
+# члена прогрессии: an = a1 + (n-1) * d.
+# Каждое число вводится с новой строки.
+
+# def arithmetic_progression(first_el, number_of_el, diff_of_progression):
+#     arithmetic_progression =[]
+#     for i in range(1, number_of_el + 1):
+#         arithmetic_progression.append(firs_el + (i - 1) * diff_of_progression)
+    
+#     for i in range(number_of_el):
+#         print(f"{i + 1} элемент арифметической прогрессии от {firs_el} c разницей {diff_of_progression}: {arithmetic_progression[i]}")
+
+# firs_el = int(input("Введите первый элемент арифметической прогрессии: "))
+# number_of_el = int(input("Введите количество элементов арифметической прогрессии: "))
+# diff_of_progression = int(input("Введите разность для арифметической прогрессии: "))
+# print(arithmetic_progression(firs_el, number_of_el, diff_of_progression))
+
+# Задача 32: Определить индексы элементов массива (списка), значения которых принадлежат 
+# заданному диапазону (т.е. не меньше заданного минимума и не больше заданного максимума)
+
+# import random
+
+# def is_belong_to_range (some_list, min, max):
+#     for i in range(len(some_list) - 1):
+#         if some_list[i] < user_max and some_list[i] > user_min:
+#             print(f"Индексом элемента {some_list[i]}, принадлежащего диапазону от {min} до {max}, является {i}.")
+
+# user_min = int(input("Введите минимальное значение диапазона: "))
+# user_max = int(input("Введите максимальное значение диапазона: "))
+
+# random_list = [random.randint(-50, 50) for _ in range(40)]
+# print(random_list)
+
+# is_belong_to_range(random_list, user_min, user_max)
