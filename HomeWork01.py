@@ -614,11 +614,14 @@
 # 5 10 15 20 25 30
 # 6 12 18 24 30 36
 
+# def print_operation_table (operation, num_columns, num_rows):
+    
+#     for i in range (1, num_columns + 1):
+#         my_list = []
+#         for j in range(1, num_rows + 1):
+#             my_list.append(operation(i, j))
+#         print(''.join(f'{x: = 4}' for x in my_list))
 
-
-def print_multyply_table (num_columns, num_rows):
-    print(lambda num_columns, num_rows: num_columns * num_rows)
-
-num_columns = int(input("Введите число столбцов: "))
-num_rows = int(input("Введите число строк: "))
-print_multyply_table(num_columns, num_rows)
+# num_columns = int(input("Введите число столбцов: "))
+# num_rows = int(input("Введите число строк: "))
+# print_operation_table(lambda num_columns, num_rows: num_columns * num_rows, num_columns, num_rows)
