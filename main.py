@@ -732,7 +732,7 @@
 # принимает pandas DataFrame(таблицу). Чтобы изобразить отношения между двумя
 # столбцами достаточно указать, какой столбец отобразить по оси х, а какой по оси у
 
-# import seaborn ad sns
+# import seaborn as sns
 # Изображение точек долготы по отношению к широте:
 # sns.scatterplot(data=df, x='longitude', y = 'latitude') # обращаемся к библиотеке 
 # seaborn, используем функцию scatterplot, указывает датафрейм и столбцы как x и y.
@@ -740,7 +740,7 @@
 # hue - выражать оттенок можем.
 # size - можем менять размер точек.
 
-# Можем визуализировать данные с помощью класса PairGrid. принимает, как раргумент
+# Можем визуализировать данные с помощью класса PairGrid. принимает, как аргумент
 # таблицу и визуализирует все возможные отношения.
 # cols = ['population', 'median_income'] создание списка со столбцами
 # g = sns.PairGrid(df[cols]) результат работы функции пэиргрид
@@ -755,6 +755,7 @@
 # sns.hisplot(data = df, x = 'housing_median_age')
 # sns.hisplot(data = df[df['housing_median_age'] > 50], x = "median_income")
 
+# df.columns - можно увидеть, какие есть столбцы 
 
 # Распределение по возрасту более равномерное. Большую часть жителей
 # составляют люди в возрасте от 20 до 40 лет. Но и молодежи не мало. Также очень
@@ -848,11 +849,125 @@
 #     print("ИНН невалидный.")
 
 
+# Крестики-нолики
+# Ввод по очереди, начинают крестики
+# Ввод координат клетки
+# Рисуем текущий статус
+
+# def get_game_status (matrix):
+#     status_list = ["playing","win","nobody"]
+
+#     for i in matrix:
+#         if len(set(i)) == 1 and set(i).pop() != "   ":
+#             return status_list[1]
+
+#     for i in range(3):
+#         if matrix[0][i] == matrix[1][i] == matrix[2][i] != "   ":
+#             return status_list[1]
+        
+#     if matrix[0][0] == matrix[1][1] == matrix[2][2] != "   ":
+#         return status_list[1]
+    
+#     if matrix[2][0] == matrix[1][1] == matrix[0][2] != "   ":
+#         return status_list[1]
+    
+#     for i in range(3):
+#         if "   " in matrix:
+#             return status_list[0]
+#     return status_list[2]
+
+# def set_mark (matrix: list, mark: str, x: int, y: int):
+#     if matrix[x][y] != "   ": # x - столбцы, y - строки
+#         matrix[x][y] = mark
+#         return True
+#     return False
+    
 
 
+# field = [['   'for _ in range(3)] for _ in range(3)]
+
+# stop = False
+# while not stop:
+#     print(*field, sep="\n")
+#     print("Ходит крестик.")
+#     x, y = map(int , input().split()) # Вводится строка ,мы преобразуем ее
+#     # по пробелу, получается список из строк, который перобразуется
+#     # в инт, возвращается генератор. Можем отдать первый эл-т в х, 
+#     # второй - в y
+#     while not set_mark(field, "X", x, y):
+#         print("Эта клетка уже занята! Попробуйте ещё раз!")
+#         x, y = map(int , input().split())
+
+#     if get_game_status(field) == "win" or get_game_status(field) == "nobody":
+#         stop = True
+#         print (get_game_status(field))
+#         continue # Вернется, проверит, если нет - продолжит
+    
+#     print(*field, sep="\n")
+#     print("Ходит нолик")
+
+#     x, y = map(int , input().split())
+#     while not set_mark(field, "O", x, y):
+#         print("Эта клетка уже занята! Попробуйте ещё раз!")
+#         x, y = map(int , input().split())
+
+#     if get_game_status(field) == "win" or get_game_status(field) == "nobody":
+#         stop = True
+#         print (get_game_status(field))
+#         continue
+
+# def get_game_status(matrix):
+#     status_list = ["playing", "win", "draw"]
+#     for i in matrix:
+#         if len(set(i)) == 1 and set(i).pop() != "-":
+#             return status_list[1]
+
+#     for i in range(3):
+#         if matrix[0][i] == matrix[1][i] == matrix[2][i] != "-":
+#             return status_list[1]
+
+#     if matrix[0][2] == matrix[1][1] == matrix[2][0] != "-":
+#         return status_list[1]
+
+#     if matrix[0][0] == matrix[1][1] == matrix[2][2] != "-":
+#         return status_list[1]
+
+#     for i in range(3):
+#         if "-" in matrix[i]:
+#             return status_list[0]
+#     return status_list[2]
 
 
+# def set_mark(matrix: list, mark: str, x: int, y: int):
+#     if matrix[x][y] == "-":
+#         matrix[x][y] = mark
+#         return True
+#     return False
 
+
+# field = [["-" for _ in range(3)] for _ in range(3)]
+
+# stop = False
+# while not stop:
+#     print(*field, sep="\n")
+#     print("ходит крестик")
+#     x, y = map(int, input().split())
+#     while not set_mark(field, "X", x, y):
+#         print("клетка занята")
+#         x, y = map(int, input().split())
+#     if get_game_status(field) == "win" or get_game_status(field) == "draw":
+#         stop = True
+#         print(get_game_status(field))
+#         continue
+#     print(*field, sep="\n")
+#     print("ходит нолик")
+#     x, y = map(int, input().split())
+#     while not set_mark(field, "O", x, y):
+#         print("клетка занята")
+#         x, y = map(int, input().split())
+#     if get_game_status(field) == "win" or get_game_status(field) == "draw":
+#         stop = True
+#         print(get_game_status(field))
 
 
 
